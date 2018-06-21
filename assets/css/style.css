@@ -13,6 +13,10 @@ p{
     padding-top:5px;
 }
 
+input{
+    padding-left:5px;
+}
+
 #banner{
     font-family:'Permanent Marker', cursive;
     font-size:55px;
