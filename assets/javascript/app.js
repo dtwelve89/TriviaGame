@@ -1,25 +1,32 @@
 // Variable for Time in Seconds
 var time = 60;
 
-// Timer Counting Down and Display
+// On Start Click Timer Counting Down, Display, and Result Checker in 60 Seconds (1min)
 
+$("#start").on("click", function(){
 var quiz = setInterval(myTimer, 1000);
 function myTimer(){
     time--;
     console.log(time);
-    $("#display1").text("Time Remaining: " + time + " Seconds");
+    $("#display").text("Time Remaining: " + time + " Seconds");
     if (time <= 0){
         clearInterval(quiz);
     }
 }
+});
 
-// Timer to Activate in 60 Seconds (1min)
-
-setTimeout(checkResults, 1000 * time);
+$("#start").on("click", function(){
+    setTimeout(checkResults, 1000 * time);
+    $("#display").show();
+    $("form").show();
+    $("#button").show();
+    $("#start").hide();
+ 
+});
 
 // Click Event Listener
 
-document.getElementById("button").addEventListener("click", checkResults);
+$("#button").on("click", checkResults);
 
 function checkResults(){
 
@@ -39,8 +46,7 @@ var unAnswered = 0;
             unAnswered = 9 - amountCorrect - amountWrong;
         }
     }
-    clearInterval(quiz);
-    $("#display1").empty();
+    $("#display").hide();
     $("form").empty();
     $(".wrapper").empty();
     $("#display1").text("All Done!");
@@ -50,3 +56,6 @@ var unAnswered = 0;
 }
 
 // Intializers
+
+$("form").hide();
+$("#button").hide();
